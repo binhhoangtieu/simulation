@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Simulation.Models.STYLE_WEIGHT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Style)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ver)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Act)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ref)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Glo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Int)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloom1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloom2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloom3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloom4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloom5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloom6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Interesting)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NotInteresting)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Style)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ver)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Act)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ref)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Glo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Int)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bloom1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bloom2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bloom3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bloom4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bloom5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bloom6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Interesting)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NotInteresting)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

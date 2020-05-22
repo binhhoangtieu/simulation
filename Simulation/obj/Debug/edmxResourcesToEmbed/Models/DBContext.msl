@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ITSModelStoreContainer" CdmEntityContainer="ITSEntities">
+    <EntitySetMapping Name="CONCEPTs">
+      <EntityTypeMapping TypeName="ITSModel.CONCEPT">
+        <MappingFragment StoreEntitySet="CONCEPT">
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="Concept_Name" ColumnName="Concept_Name" />
+          <ScalarProperty Name="Concept_Content" ColumnName="Concept_Content" />
+          <ScalarProperty Name="Concept_Weight" ColumnName="Concept_Weight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUBJECTs">
+      <EntityTypeMapping TypeName="ITSModel.SUBJECT">
+        <MappingFragment StoreEntitySet="SUBJECT">
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TOPICs">
+      <EntityTypeMapping TypeName="ITSModel.TOPIC">
+        <MappingFragment StoreEntitySet="TOPIC">
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="W_Prerequisite" ColumnName="W_Prerequisite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="ITSModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="ITSModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="ITSModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="ITSModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="ITSModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="ITSModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="PREREQUISITEs">
+      <EntityTypeMapping TypeName="ITSModel.PREREQUISITE">
+        <MappingFragment StoreEntitySet="PREREQUISITE">
+          <ScalarProperty Name="Pre_Type" ColumnName="Pre_Type" />
+          <ScalarProperty Name="Pre_TopicID" ColumnName="Pre_TopicID" />
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STYLE_WEIGHT">
+      <EntityTypeMapping TypeName="ITSModel.STYLE_WEIGHT">
+        <MappingFragment StoreEntitySet="STYLE_WEIGHT">
+          <ScalarProperty Name="NotInteresting" ColumnName="NotInteresting" />
+          <ScalarProperty Name="Interesting" ColumnName="Interesting" />
+          <ScalarProperty Name="Bloom6" ColumnName="Bloom6" />
+          <ScalarProperty Name="Bloom5" ColumnName="Bloom5" />
+          <ScalarProperty Name="Bloom4" ColumnName="Bloom4" />
+          <ScalarProperty Name="Bloom3" ColumnName="Bloom3" />
+          <ScalarProperty Name="Bloom2" ColumnName="Bloom2" />
+          <ScalarProperty Name="Bloom1" ColumnName="Bloom1" />
+          <ScalarProperty Name="Int" ColumnName="Int" />
+          <ScalarProperty Name="Sen" ColumnName="Sen" />
+          <ScalarProperty Name="Glo" ColumnName="Glo" />
+          <ScalarProperty Name="Seg" ColumnName="Seg" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="Act" ColumnName="Act" />
+          <ScalarProperty Name="Ver" ColumnName="Ver" />
+          <ScalarProperty Name="Vis" ColumnName="Vis" />
+          <ScalarProperty Name="Style" ColumnName="Style" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERs">
+      <EntityTypeMapping TypeName="ITSModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="Glo" ColumnName="Glo" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="Ver" ColumnName="Ver" />
+          <ScalarProperty Name="Vis" ColumnName="Vis" />
+          <ScalarProperty Name="Int" ColumnName="Int" />
+          <ScalarProperty Name="Sen" ColumnName="Sen" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="Act" ColumnName="Act" />
+          <ScalarProperty Name="Right" ColumnName="Right" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

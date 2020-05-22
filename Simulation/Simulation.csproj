@@ -179,13 +179,31 @@
     <Compile Include="Controllers\CONCEPTsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PREREQUISITEsController.cs" />
+    <Compile Include="Controllers\STYLE_WEIGHTController.cs" />
     <Compile Include="Controllers\SUBJECTsController.cs" />
     <Compile Include="Controllers\TOPICsController.cs" />
+    <Compile Include="Controllers\USERsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CONCEPT.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DBContext.Context.cs">
@@ -205,10 +223,19 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PREREQUISITE.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STYLE_WEIGHT.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SUBJECT.cs">
       <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TOPIC.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USER.cs">
       <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -242,6 +269,7 @@
       <DependentUpon>DBContext.edmx</DependentUpon>
       <LastGenOutput>DBContext.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -302,6 +330,21 @@
     <Content Include="Views\CONCEPTs\Details.cshtml" />
     <Content Include="Views\CONCEPTs\Edit.cshtml" />
     <Content Include="Views\CONCEPTs\Index.cshtml" />
+    <Content Include="Views\STYLE_WEIGHT\Create.cshtml" />
+    <Content Include="Views\STYLE_WEIGHT\Delete.cshtml" />
+    <Content Include="Views\STYLE_WEIGHT\Details.cshtml" />
+    <Content Include="Views\STYLE_WEIGHT\Edit.cshtml" />
+    <Content Include="Views\STYLE_WEIGHT\Index.cshtml" />
+    <Content Include="Views\PREREQUISITEs\Create.cshtml" />
+    <Content Include="Views\PREREQUISITEs\Delete.cshtml" />
+    <Content Include="Views\PREREQUISITEs\Details.cshtml" />
+    <Content Include="Views\PREREQUISITEs\Edit.cshtml" />
+    <Content Include="Views\PREREQUISITEs\Index.cshtml" />
+    <Content Include="Views\USERs\Create.cshtml" />
+    <Content Include="Views\USERs\Delete.cshtml" />
+    <Content Include="Views\USERs\Details.cshtml" />
+    <Content Include="Views\USERs\Edit.cshtml" />
+    <Content Include="Views\USERs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

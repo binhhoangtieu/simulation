@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Simulation.Models.USER>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Right)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Act)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ref)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Int)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ver)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seq)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Glo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Right)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Act)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ref)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Int)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ver)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seq)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Glo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}
+
+</table>

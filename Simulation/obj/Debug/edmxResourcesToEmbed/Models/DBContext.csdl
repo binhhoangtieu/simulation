@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ITSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CONCEPT">
+    <Key>
+      <PropertyRef Name="ConceptID" />
+    </Key>
+    <Property Name="ConceptID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TopicID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Concept_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Concept_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Concept_Weight" Type="Double" />
+    <NavigationProperty Name="TOPIC" Relationship="Self.FK_CONCEPT_TOPIC" FromRole="CONCEPT" ToRole="TOPIC" />
+  </EntityType>
+  <EntityType Name="SUBJECT">
+    <Key>
+      <PropertyRef Name="SubjectID" />
+    </Key>
+    <Property Name="SubjectID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SubjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TOPIC">
+    <Key>
+      <PropertyRef Name="TopicID" />
+    </Key>
+    <Property Name="TopicID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SubjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="W_Prerequisite" Type="Double" />
+    <NavigationProperty Name="CONCEPTs" Relationship="Self.FK_CONCEPT_TOPIC" FromRole="TOPIC" ToRole="CONCEPT" />
+  </EntityType>
+  <Association Name="FK_CONCEPT_TOPIC">
+    <End Role="TOPIC" Type="Self.TOPIC" Multiplicity="0..1" />
+    <End Role="CONCEPT" Type="Self.CONCEPT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOPIC">
+        <PropertyRef Name="TopicID" />
+      </Principal>
+      <Dependent Role="CONCEPT">
+        <PropertyRef Name="TopicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ITSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CONCEPTs" EntityType="Self.CONCEPT" />
+    <EntitySet Name="SUBJECTs" EntityType="Self.SUBJECT" />
+    <EntitySet Name="TOPICs" EntityType="Self.TOPIC" />
+    <AssociationSet Name="FK_CONCEPT_TOPIC" Association="Self.FK_CONCEPT_TOPIC">
+      <End Role="TOPIC" EntitySet="TOPICs" />
+      <End Role="CONCEPT" EntitySet="CONCEPTs" />
+    </AssociationSet>
+    <EntitySet Name="C__MigrationHistory" EntityType="ITSModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="ITSModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="ITSModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="ITSModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="ITSModel.AspNetUser" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ITSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ITSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="ITSModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="PREREQUISITEs" EntityType="ITSModel.PREREQUISITE" />
+    <EntitySet Name="STYLE_WEIGHT" EntityType="ITSModel.STYLE_WEIGHT" />
+    <EntitySet Name="USERs" EntityType="ITSModel.USER" />
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="ITSModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="ITSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="ITSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="ITSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="ITSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="ITSModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="ITSModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ITSModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="ITSModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ITSModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="ITSModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="ITSModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="PREREQUISITE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TopicID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_TopicID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_Type" Type="Int32" />
+  </EntityType>
+  <EntityType Name="STYLE_WEIGHT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Style" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Vis" Type="Double" />
+    <Property Name="Ver" Type="Double" />
+    <Property Name="Act" Type="Double" />
+    <Property Name="Ref" Type="Double" />
+    <Property Name="Seg" Type="Double" />
+    <Property Name="Glo" Type="Double" />
+    <Property Name="Sen" Type="Double" />
+    <Property Name="Int" Type="Double" />
+    <Property Name="Bloom1" Type="Double" />
+    <Property Name="Bloom2" Type="Double" />
+    <Property Name="Bloom3" Type="Double" />
+    <Property Name="Bloom4" Type="Double" />
+    <Property Name="Bloom5" Type="Double" />
+    <Property Name="Bloom6" Type="Double" />
+    <Property Name="Interesting" Type="Double" />
+    <Property Name="NotInteresting" Type="Double" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Right" Type="Int32" />
+    <Property Name="Act" Type="Int32" />
+    <Property Name="Ref" Type="Int32" />
+    <Property Name="Sen" Type="Int32" />
+    <Property Name="Int" Type="Int32" />
+    <Property Name="Vis" Type="Int32" />
+    <Property Name="Ver" Type="Int32" />
+    <Property Name="Seq" Type="Int32" />
+    <Property Name="Glo" Type="Int32" />
+  </EntityType>
+</Schema>
